@@ -84,7 +84,8 @@ static struct Ssort* Create(const int size)
 
     for(int i = 0; i < size; i++) {
 		struct Ssort *ssort_tmp = (struct Ssort*)malloc(sizeof(struct Ssort));
-		memset(ssort_tmp, 0, sizeof(struct Ssort));
+		ssort_tmp->pointer0 = NULL;
+		ssort_tmp->pointer1 = NULL;
 		ssort_tmp->next = ssort_first;
 		ssort_first = ssort_tmp;
 	}
