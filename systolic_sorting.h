@@ -7,6 +7,6 @@
 #ifndef H_SYSTOLIC_SORT
 #define H_SYSTOLIC_SORT
 
-void SystolicSort(int *buf_in, int *buf_out, const int size);
+void SystolicSort(int* const buf_in, int* const buf_out, const int size);
 
 #endif
