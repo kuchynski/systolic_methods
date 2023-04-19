@@ -2,13 +2,15 @@
 
 
 
-module sort_testbench(
-    );
+module sort_testbench #(
+    parameter integer SIZE = 1024,
+    parameter integer WIDTH = 12
+    )( );
 
     reg clk = 0;
-    reg[31:0]d = 10;
+    reg[WIDTH-1:0]d = 10;
     reg[7:0] st = 0;
-    wire[31:0]q;
+    wire[WIDTH-1:0]q;
     reg rst_n = 0;
     wire active_input, active_output;
 
@@ -19,12 +21,12 @@ module sort_testbench(
         rst_n <= 1;
         st <= st + 1;
         if (st[0])
-            d <= st[1]? d + 5 : d - 3;
+            d <= st[1]? d + 8 : d - 3;
     end
 
     sort # (
-        .SIZE(8),
-        .WIDTH(32)
+        .SIZE(SIZE),
+        .WIDTH(WIDTH)
         ) sort_instance (
         .clk(clk),
         .rst_n(rst_n),
