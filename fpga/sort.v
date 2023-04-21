@@ -33,33 +33,25 @@ module sort #(
             active_input <= st < SIZE*2;
 
             if (st < 2) begin
-            end else if (st < SIZE*2 + 2) begin                
-                if (st[0] == 0) begin
-                    registers[0] <= (d > registers[0])? d : registers[0];
-                    for(i = 2; i < SIZE; i = i + 2) begin
-                        registers[i-1] <= (registers[i] > registers[i-1])? registers[i-1] : registers[i];
-                        registers[i]   <= (registers[i] > registers[i-1])? registers[i] : registers[i-1];
-                    end
-                end else begin
-                    for(i = 1; i < SIZE; i = i + 2) begin
-                        registers[i-1] <= (registers[i] > registers[i-1])? registers[i-1] : registers[i];
-                        registers[i]   <= (registers[i] > registers[i-1])? registers[i] : registers[i-1];
+            end else if (st < SIZE*2 + 2) begin
+                if (st[0] == 0 && d > registers[0])                
+                    registers[0] <= d;
+
+                for(i = 1; i < SIZE; i = i + 1) begin
+                    if (st[0] == i[0] && registers[i] < registers[i-1]) begin
+                        registers[i-1] <= registers[i];
+                        registers[i]   <= registers[i-1];
                     end
                 end
             end else if (st < SIZE*3 + 2) begin
                 active_input <= 0;
-                if (st[0] == 0) begin
-                    for(i = 2; i < SIZE; i = i + 2) begin
-                        registers[i-1] <= (registers[i] > registers[i-1])? registers[i-1] : registers[i];
-                        registers[i]   <= (registers[i] > registers[i-1])? registers[i] : registers[i-1];
-                        active[i] <= registers[i] < registers[i-1];
-                    end
-                    if (active == 0)
-                        st <= SIZE*3 + 2;
-                end else begin
-                    for(i = 1; i < SIZE; i = i + 2) begin
-                        registers[i-1] <= (registers[i] > registers[i-1])? registers[i-1] : registers[i];
-                        registers[i]   <= (registers[i] > registers[i-1])? registers[i] : registers[i-1];
+                if (st[0] == 0 && active == 0)
+                    st <= SIZE*3 + 2;
+
+                for(i = 1; i < SIZE; i = i + 1) begin
+                    if (st[0] == i[0] && registers[i] < registers[i-1]) begin
+                        registers[i-1] <= registers[i];
+                        registers[i]   <= registers[i-1];
                         active[i] <= registers[i] < registers[i-1];
                     end
                 end
