@@ -15,6 +15,10 @@ Usage: see fpga/sort_testbench.v for an example
     - output reg active_input,          - input progress indicator
     - output reg active_output          - output progress indicator
 
+![Image description](./pic0.jpg)
+
 <span style="color:yellow">2. C implementation - systolic_sorting.c </span>
 Just c implementation)
 There is no connection between verilog and C code, they are independent
+
+
