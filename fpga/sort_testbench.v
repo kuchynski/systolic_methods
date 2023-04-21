@@ -20,8 +20,8 @@ module sort_testbench #(
     always@(posedge clk) begin
         rst_n <= 1;
         st <= st + 1;
-        if (st[0])
-            d <= st[1]? d + 8 : d - 3;
+        if (st[0] && active_input)
+            d <= $urandom%4000;//st[1]? d + 8 : d - 3;
     end
 
     sort # (
