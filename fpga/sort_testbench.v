@@ -4,7 +4,7 @@
 
 module sort_testbench #(
     parameter integer SIZE = 1024,
-    parameter integer WIDTH = 12
+    parameter integer WIDTH = 32
     )( );
 
     reg clk = 0;
@@ -15,7 +15,7 @@ module sort_testbench #(
     wire active_input, active_output;
 
     always begin
-        #10 clk = !clk;
+        #2 clk = !clk;
     end
     always@(posedge clk) begin
         rst_n <= 1;
