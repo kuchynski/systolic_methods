@@ -1,7 +1,13 @@
+//
+// systolic sort algorithm
+// copyright Andrei Kuchynski
+// kuchynskiandrei@gmail.com
+//
+
 `timescale 1ns / 1ps
 
 module sort #(
-    parameter integer SIZE = 8,
+    parameter integer SIZE = 1024,
     parameter integer WIDTH = 32
 )
 (
