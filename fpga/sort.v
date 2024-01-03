@@ -16,7 +16,7 @@ module sort #(
     input[WIDTH-1:0] d,
 
     output [WIDTH-1:0] q,
-    output reg active_input = 0,
+    output reg active_input,
     output reg active_output
 );
 
@@ -51,7 +51,6 @@ module sort #(
                     end
                 end
             end else if (st < SIZE*3 + 2) begin
-                active_input <= 0;
                 if (st[0] == 1 && active == 0) begin
                     st <= SIZE*3 + 2;
                     active_output <= 1;
